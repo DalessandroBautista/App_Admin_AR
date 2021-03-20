@@ -27,6 +27,8 @@ public class LaminaTextoBD  extends JPanel{
 	JButton extras=new JButton("Actualizar valor extras");
 	JButton borrar=new JButton("Borrar todos los pedidos");
 	JButton borrarPedido=new JButton("Borrar ultimo pedido");
+	JButton agregarHamburgesa=new JButton("Agregar hamburgesa");
+	JButton borrarHamburgesa=new JButton("Borrar hamburgesa");
 	
 	 
 
@@ -39,16 +41,22 @@ public class LaminaTextoBD  extends JPanel{
 		ActionListener oyente3=new actualizarExtras();
 		ActionListener oyente4=new borrarPedidos();
 		ActionListener oyente5=new borrarUltimoPedido();
+		ActionListener oyente6=new agregarHamburgesa();
+		ActionListener oyente7=new borrarHamburgesa();
 		
 		hamburgesas.addActionListener(oyente);
 		totalCaja.addActionListener(oyente2);
 		extras.addActionListener(oyente3);
 		borrar.addActionListener(oyente4);
 		borrarPedido.addActionListener(oyente5);
+		agregarHamburgesa.addActionListener(oyente6);
+		borrarHamburgesa.addActionListener(oyente7);
 		
 		add(hamburgesas, BorderLayout.NORTH);
 		add(extras, BorderLayout.NORTH);
 		add(totalCaja, BorderLayout.NORTH);
+		add(agregarHamburgesa, BorderLayout.NORTH);
+		add(borrarHamburgesa, BorderLayout.NORTH);
 		add(borrar, BorderLayout.NORTH);
 		add(borrarPedido, BorderLayout.NORTH);
 		LaminaHamburgesas laminaHamburgesas=new LaminaHamburgesas();
@@ -128,4 +136,38 @@ public class LaminaTextoBD  extends JPanel{
 			JOptionPane.showMessageDialog(LaminaTextoBD.this,"El ultimo pedido fue borrado exitosamente");
 		}	
 	}
+	private class borrarHamburgesa implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			try {
+				String n_hamburgesas=JOptionPane.showInputDialog(LaminaTextoBD.this, "Hamburgesa a borrar", "Ingrese nombre de hamburgesa a borrar", 1);
+				n_hamburgesas=n_hamburgesas.toLowerCase();
+				new ControladorBorrarHamburgesa(n_hamburgesas);
+				JOptionPane.showMessageDialog(LaminaTextoBD.this,"La hamburgesa fue borrada exitosamente");
+			}catch(Exception e3){
+				System.out.println("La hamburgesa no pudo ser borrada");
+			}
+			new MarcoBD();
+			Window w = SwingUtilities.getWindowAncestor(LaminaTextoBD.this);
+		     w.setVisible(false);
+		}
+	}
+
+	private class agregarHamburgesa implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			try {
+				String n_hamburgesas=JOptionPane.showInputDialog(LaminaTextoBD.this, "Hamburgesa a agregar", "Ingrese nombre de hamburgesa a agregar", 1);
+				String p_hamburgesas=JOptionPane.showInputDialog(LaminaTextoBD.this, "Precio de hamburgesa a agregar", "Ingrese precio de hamburgesa a agregar", 1);
+				n_hamburgesas=n_hamburgesas.toLowerCase();
+				new ControladorAgregarHamburgesa(n_hamburgesas, p_hamburgesas);
+				JOptionPane.showMessageDialog(LaminaTextoBD.this,"La hamburgesa fue agregada exitosamente");
+			}catch(Exception e3){
+				System.out.println("La hamburgesa no pudo ser agregada");
+			}
+			new MarcoBD();
+			Window w = SwingUtilities.getWindowAncestor(LaminaTextoBD.this);
+		     w.setVisible(false);
+		}
+	}
 }
+
