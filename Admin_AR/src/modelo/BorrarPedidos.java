@@ -21,7 +21,7 @@ public class BorrarPedidos {
 		
 		try {
 			miStatement=accesoBD.createStatement();
-			miStatement.execute("TRUNCATE TABLE sql10398137.pedido");
+			miStatement.execute("TRUNCATE TABLE pedido");
 			accesoBD.close();
 		}catch(Exception ex){
 			System.out.println("Fallo la conexion en Actualizar Extras");

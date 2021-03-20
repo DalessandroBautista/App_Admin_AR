@@ -27,6 +27,7 @@ public class UpdatePrecios {
 			System.out.println(sentencia);
 			sentencia.executeUpdate();
 			System.out.println("Update finalizada en UpdatePrecios");
+			accesoBD.close();
 		}catch(Exception e) {
 			System.out.println("Fallo en UpdatePrecios con: hamburgesas  " + " " + e.getMessage());
 			e.printStackTrace();

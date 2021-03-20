@@ -22,7 +22,7 @@ public class BorrarUltimoPedido {
 		try {
 			Statement miStatement=accesoBD.createStatement();
 			miResultset=miStatement.executeQuery("SELECT * FROM pedido");
-			
+
 		}catch(Exception ex){
 			System.out.println("Fallo la conexion en Actualizar Extras");
 			ex.printStackTrace();

@@ -24,7 +24,6 @@ public class CargaProducto  extends JPanel {
 			String x= "SELECT * FROM " + tabla;
 			Statement miStatement=accesoBD.createStatement();
 			miResultset=miStatement.executeQuery(x);
-			
 		}catch(Exception ex){
 			System.out.println("Fallo la conexion en CargaProductos " + tabla + " " + ex.getCause());
 			ex.printStackTrace();
